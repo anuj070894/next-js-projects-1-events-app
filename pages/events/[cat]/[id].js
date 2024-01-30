@@ -59,7 +59,7 @@ export default function Home({ data }) {
 export async function getStaticPaths(context) {
     const data = await import("/data/data.json");
     console.log(data.allEvents);
-    const allPaths = data.allEvents.map(ev => {
+    const allPaths = data.allEvents && data.allEvents.map(ev => {
         return {
             params: {
                 id: ev.id,

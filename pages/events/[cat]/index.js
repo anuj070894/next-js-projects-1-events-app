@@ -5,7 +5,7 @@ export default function Home({ data, pageName }) {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <h2>Events in {pageName}</h2>
-            {data.map(ev => {
+            {data && data.map(ev => {
                 return (
                     <Link href={`/events/${ev.city}/${ev.id}`} key={ev.id} passHref>
 
@@ -27,7 +27,7 @@ export default function Home({ data, pageName }) {
 
 export async function getStaticPaths(context) {
     const data = await import("/data/data.json");
-    const allPaths = data.events_categories.map(ev => {
+    const allPaths = data.events_categories && data.events_categories.map(ev => {
         return {
             params: {
                 cat: `${ev.id}`

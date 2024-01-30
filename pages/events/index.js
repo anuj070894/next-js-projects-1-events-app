@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home({ data }) {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            {data.map(ev => {
+            {data && data.map(ev => {
                 return (
                     <Link key={ev.id} href={`/events/${ev.id}`} passHref>
 
